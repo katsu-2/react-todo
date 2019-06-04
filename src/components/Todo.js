@@ -13,15 +13,25 @@ class Todo extends React.Component {
           />
             {text}
         </label>
-        <button>編集</button>
-        <button>削除</button>
+        <button onClick={this.handleClickEdit}>編集</button>
+        <button onClick={this.handleClickDelete}>削除</button>
       </div>
     );
   }
 
   handleChangeCompleted = () => {
     const { onChange, id, completed } = this.props;
-    onChange(id, !completed);
+    onChange(id, 'completed',!completed);
+  };
+
+  handleClickDelete = () => {
+    const { onDelete, id } = this.props
+    onDelete(id);
+  };
+
+  handleClickEdit = () => {
+    const { onChange, id, editing } = this.props
+    onChange(id, "editing", !editing);
   };
 }
 
